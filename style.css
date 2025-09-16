@@ -1,0 +1,163 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #fff;
+}
+
+/* 헤더 */
+header {
+    background-color: #16b5ea;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* 프로필 & 기술스택 */
+.profile-section {
+    display: flex;
+    flex-direction: row; /* 가로 배치 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: flex-start; /* 위쪽 맞춤 */
+    padding: 30px;
+    gap: 30px;
+    background-color: #fff;
+    color: #000;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 220px;
+    background-color: #568291;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 8px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    align-items: flex-start;
+}
+
+.profile-info .name {
+    background-color: #ffffff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.tech-stack button {
+    background-color: #0b5c78;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tech-stack button:hover {
+    background-color: #097094;
+}
+
+/* 게임 섹션 */
+.game-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    align-items: center;
+}
+
+.game-description{
+    flex: 3;
+    background-color: #0b5c78;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.game-image {
+    flex: 1;
+    background-color: #0b5c78;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* 유니티 웹지엘 */
+.unity-section {
+    padding: 30px;
+    text-align: center;
+}
+
+.unity-placeholder {
+    background-color: #0b5c78;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+/* 푸터 */
+footer {
+    margin-top: 30px;
+    background-color: #0b5c78;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+}
+
+footer button {
+    background-color: #094f64;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+footer button:hover {
+    background-color: #06637e;
+}
+
+/* 반응형 스타일 */
+@media screen and (max-width: 768px) {
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-section {
+        flex-direction: column;
+    }
+
+    .game-description, .game-image {
+        width: 100%;
+    }
+}
