@@ -1,12 +1,53 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | MypageMinigame</title>
-  </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1000 height=1000 tabindex="-1" style="width: 1000px; height: 1000px; background: #231F20"></canvas>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개발자 장기성의 홈페이지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <header>개발자 장기성의 홈페이지</header>
+
+    <!-- 프로필 -->
+    <section class="profile-section">
+        <img src="고양이.png" class="profile-photo"></img>
+        <div class="profile-info">
+            <div class="name">장기성</div>
+            <div class="tech-stack">
+                <button>유니티</button>
+                <button>Git & Github</button>
+                <button>AWS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 게임 섹션 1 -->
+    <section class="game-section">
+        <div class="game-description">게임소개글 및 링크1</div>
+        <div class="game-image">게임 이미지1</div>
+    </section>
+
+    <!-- 게임 섹션 2 -->
+    <section class="game-section">
+        <div class="game-image">게임 이미지2</div>
+        <div class="game-description">게임소개글 및 링크2</div>
+    </section>
+
+    <!-- 게임 섹션 3 -->
+    <section class="game-section">
+        <div class="game-description">게임소개글 및 링크3</div>
+        <div class="game-image">게임 이미지3</div>
+    </section>
+
+    <!-- 유니티 게임 -->
+    <section class="unity-section">
+        <!--div class="unity-placeholder">유니티 게임 웹지엘</div-->
+    
+
+    <canvas id="unity-canvas" width=1000 height=1000 tabindex="-1" style="width: 800px; height: 800px; background: #231F20"></canvas>
     <script src="Build/MypageMinigame.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -27,9 +68,9 @@
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
-        dataUrl: "Build/MypageMinigame.data.br",
-        frameworkUrl: "Build/MypageMinigame.framework.js.br",
-        codeUrl: "Build/MypageMinigame.wasm.br",
+        dataUrl: "Build/MypageMinigame.data",
+        frameworkUrl: "Build/MypageMinigame.framework.js",
+        codeUrl: "Build/MypageMinigame.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "MypageMinigame",
@@ -41,5 +82,13 @@
         alert(message);
       });
     </script>
-  </body>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <button>전화번호</button>
+        <button>회사주소?</button>
+    </footer>
+
+</body>
 </html>
