@@ -7,7 +7,7 @@
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=1000 height=1000 tabindex="-1" style="width: 1000px; height: 1000px; background: #231F20"></canvas>
-    <script src="Build/마이페이지게임웹.loader.js"></script>
+    <script src="Build/MypageMinigame.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -27,9 +27,9 @@
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
-        dataUrl: "Build/마이페이지게임웹.data.br",
-        frameworkUrl: "Build/마이페이지게임웹.framework.js.br",
-        codeUrl: "Build/마이페이지게임웹.wasm.br",
+        dataUrl: "Build/MypageMinigame.data.br",
+        frameworkUrl: "Build/MypageMinigame.framework.js.br",
+        codeUrl: "Build/MypageMinigame.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "MypageMinigame",
