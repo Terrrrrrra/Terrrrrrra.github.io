@@ -1,57 +1,45 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개발자 장기성의 홈페이지</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | MypageMinigame</title>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=1000 height=1000 tabindex="-1" style="width: 1000px; height: 1000px; background: #231F20"></canvas>
+    <script src="Build/마이페이지게임웹.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
 
-    <!-- 헤더 -->
-    <header>개발자 장기성의 홈페이지</header>
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
 
-    <!-- 프로필 -->
-    <section class="profile-section">
-        <img src="고양이.png" class="profile-photo"></img>
-        <div class="profile-info">
-            <div class="name">장기성</div>
-            <div class="tech-stack">
-                <button>유니티</button>
-                <button>Git & Github</button>
-                <button>AWS</button>
-            </div>
-        </div>
-    </section>
+        document.body.style.textAlign = "left";
 
-    <!-- 게임 섹션 1 -->
-    <section class="game-section">
-        <div class="game-description">게임소개글 및 링크1</div>
-        <div class="game-image">게임 이미지1</div>
-    </section>
+      }
 
-    <!-- 게임 섹션 2 -->
-    <section class="game-section">
-        <div class="game-image">게임 이미지2</div>
-        <div class="game-description">게임소개글 및 링크2</div>
-    </section>
-
-    <!-- 게임 섹션 3 -->
-    <section class="game-section">
-        <div class="game-description">게임소개글 및 링크3</div>
-        <div class="game-image">게임 이미지3</div>
-    </section>
-
-    <!-- 유니티 게임 -->
-    <section class="unity-section">
-        <div class="unity-placeholder">유니티 게임 웹지엘</div>
-    </section>
-
-    <!-- 푸터 -->
-    <footer>
-        <button>전화번호</button>
-        <button>회사주소?</button>
-    </footer>
-
-</body>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/마이페이지게임웹.data.br",
+        frameworkUrl: "Build/마이페이지게임웹.framework.js.br",
+        codeUrl: "Build/마이페이지게임웹.wasm.br",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "MypageMinigame",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then((unityInstance) => {
+      }).catch((message) => {
+        alert(message);
+      });
+    </script>
+  </body>
 </html>
