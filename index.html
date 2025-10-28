@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개발자 장기성의 홈페이지</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,67 +15,288 @@
     <header>개발자 장기성의 홈페이지</header>
 
     <!-- 프로필 -->
-    <section class="profile-section">
-        <img src="고양이.png" class="profile-photo"></img>
+    <section class="profile-section container">
+        <img src="고양이.png" class="profile-photo" alt="프로필 사진" />
         <div class="profile-info">
             <div class="name">장기성</div>
+            <div class="bio">Unity 개발자 · 클라우드·버전관리 경험 보유</div>
             <div class="tech-stack">
-                <button>유니티</button>
-                <button>Git & Github</button>
-                <button>AWS</button>
+                <button type="button">유니티</button>
+                <button type="button">Git &amp; GitHub</button>
+                <button type="button">AWS</button>
             </div>
         </div>
     </section>
 
-    <!-- 게임 섹션 1 -->
-    <section class="game-section">
-        <div class="game-description">게임소개글 및 링크1</div>
-        <div class="game-image">게임 이미지1</div>
+    <!-- 게임 섹션 1 (비디오 갤러리) -->
+    <section class="game-section container media-section" id="section-1">
+        <div class="game-description">
+            <a href="https://autuming.github.io/TeamCossassin_Website/" target="_blank" rel="noopener">
+                포톤을 활용하여 탈콥라이크 장르 멀티플레이 게임을 개발했다
+            </a>
+        </div>
+        <div class="game-image wide-media" id="game-image-1">
+            <div class="iframe-wrap">
+                <video id="main-video" controls playsinline preload="metadata">
+                    <source src="Video/DarkKnight.mp4" type="video/mp4">
+                    브라우저가 동영상을 지원하지 않습니다.
+                </video>
+            </div>
+            <div class="video-thumbs" aria-hidden="false"></div>
+        </div>
     </section>
 
-    <!-- 게임 섹션 2 -->
-    <section class="game-section">
-        <div class="game-image">게임 이미지2</div>
-        <div class="game-description">게임소개글 및 링크2</div>
+    <!-- 게임 섹션 2 (YouTube) -->
+    <section class="game-section container media-section" id="section-2">
+        <div class="game-image wide-media" id="game-video-2">
+            <div class="iframe-wrap">
+                <div id="youtube-player-wrap">
+                    <iframe id="youtube-iframe"
+                        src="https://www.youtube.com/embed/CJgMkJR1nSc?enablejsapi=1&rel=0&playsinline=1"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="game-description">
+            <a href="https://autuming.github.io/TeamCossassin_Website/" target="_blank" rel="noopener">
+                간단한 조작감으로 보스전투 및 커스터마이징이 특징, 구글 플레이스토어 및 인앱결제 관련기능 사용
+            </a>
+        </div>
     </section>
 
-    <!-- 게임 섹션 3 -->
-    <section class="game-section">
-        <div class="game-description">게임소개글 및 링크3</div>
-        <div class="game-image">게임 이미지3</div>
+    <!-- 게임 섹션 3 (비디오 갤러리 - 11/22/44) -->
+    <section class="game-section container media-section" id="section-3">
+        <div class="game-description">
+            <a href="https://autuming.github.io/TeamCossassin_Website/" target="_blank" rel="noopener">
+                코딩을 사용한 게임플레이 현재개발중
+            </a>
+        </div>
+        <div class="game-image wide-media" id="game-image-3">
+            <div class="iframe-wrap">
+                <video id="main-video-3" controls playsinline preload="metadata">
+                    <source src="Video/11.mp4" type="video/mp4">
+                    브라우저가 동영상을 지원하지 않습니다.
+                </video>
+            </div>
+            <div class="video-thumbs" aria-hidden="false" id="thumbs-3"></div>
+        </div>
     </section>
 
     <!-- 유니티 게임 -->
-    <section class="unity-section">
-        <!--div class="unity-placeholder">유니티 게임 웹지엘</div-->
-    
-
-    <canvas id="unity-canvas" width=1000 height=1000 tabindex="-1" style="width: 90vh; height: 90vh; background: #231F20;"></canvas>
-    <script src="Build/MypageMinigame.loader.js"></script>
-    <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        arguments: [],
-        dataUrl: "Build/MypageMinigame.data",
-        frameworkUrl: "Build/MypageMinigame.framework.js",
-        codeUrl: "Build/MypageMinigame.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "MypageMinigame",
-        productVersion: "1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      }).then((unityInstance) => {
-      }).catch((message) => {
-        alert(message);
-      });
-    </script>
+    <section class="unity-section container">
+      <div class="unity-wrapper">
+        <canvas id="unity-canvas" width="1000" height="1000" tabindex="-1"></canvas>
+      </div>
+      <script src="Build/MypageMinigame.loader.js"></script>
+      <script>
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+          arguments: [],
+          dataUrl: "Build/MypageMinigame.data",
+          frameworkUrl: "Build/MypageMinigame.framework.js",
+          codeUrl: "Build/MypageMinigame.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "MypageMinigame",
+          productVersion: "1.0",
+        }).catch((message) => {
+          alert(message);
+        });
+      </script>
     </section>
 
     <!-- 푸터 -->
     <footer>
         <button>전화번호</button>
-        <button>회사주소?</button>
+        <button>회사주소</button>
     </footer>
+
+    <!-- 기존 비디오 썸네일 스크립트 (섹션1 & 섹션3) -->
+    <script>
+    (function populateThumbsSection1(){
+        const files = ["DarkKnight.mp4","Paladin.mp4","Priest.mp4","Sorcerer.mp4","Warrior.mp4","Wizard.mp4"];
+        const base = "Video/";
+        const mainVideo = document.getElementById("main-video");
+        const thumbsWrap = document.querySelector("#game-image-1 .video-thumbs");
+        if(!mainVideo || !thumbsWrap) return;
+
+        files.forEach((file) => {
+            const src = base + file;
+            const thumb = document.createElement("video");
+            thumb.className = "video-thumb";
+            thumb.src = src;
+            thumb.muted = true;
+            thumb.preload = "metadata";
+            thumb.setAttribute("aria-label", file);
+            thumb.addEventListener("click", () => {
+                const mainSource = mainVideo.querySelector("source");
+                if (mainSource) {
+                    mainSource.src = src;
+                    mainVideo.load();
+                    mainVideo.play().catch(()=>{});
+                } else {
+                    mainVideo.src = src;
+                    mainVideo.load();
+                    mainVideo.play().catch(()=>{});
+                }
+            });
+            thumb.addEventListener("mouseenter", () => thumb.play().catch(()=>{}));
+            thumb.addEventListener("mouseleave", () => { thumb.pause(); thumb.currentTime = 0; });
+            thumbsWrap.appendChild(thumb);
+        });
+    })();
+
+    (function populateThumbsSection3(){
+        const files = ["11.mp4","22.mp4","44.mp4"];
+        const base = "Video/";
+        const mainVideo = document.getElementById("main-video-3");
+        const thumbsWrap = document.getElementById("thumbs-3");
+        if(!mainVideo || !thumbsWrap) return;
+
+        files.forEach((file) => {
+            const src = base + file;
+            const thumb = document.createElement("video");
+            thumb.className = "video-thumb";
+            thumb.src = src;
+            thumb.muted = true;
+            thumb.preload = "metadata";
+            thumb.setAttribute("aria-label", file);
+            thumb.addEventListener("click", () => {
+                const mainSource = mainVideo.querySelector("source");
+                if (mainSource) {
+                    mainSource.src = src;
+                    mainVideo.load();
+                    mainVideo.play().catch(()=>{});
+                } else {
+                    mainVideo.src = src;
+                    mainVideo.load();
+                    mainVideo.play().catch(()=>{});
+                }
+            });
+            thumb.addEventListener("mouseenter", () => thumb.play().catch(()=>{}));
+            thumb.addEventListener("mouseleave", () => { thumb.pause(); thumb.currentTime = 0; });
+            thumbsWrap.appendChild(thumb);
+        });
+    })();
+    </script>
+
+    <!-- 재생 제어 스크립트: 섹션 1 -> 2 -> 3 순환 자동 재생 (섹션3는 11/22/44 순환) -->
+    <script>
+    (function(){
+        const s1Video = document.getElementById('main-video'); // section1
+        const youtubeIframeId = 'youtube-iframe'; // section2 iframe id
+        const s3Video = document.getElementById('main-video-3'); // section3
+
+        const s3Files = ['Video/11.mp4','Video/22.mp4','Video/44.mp4'];
+        let s3Index = 0;
+
+        let ytPlayer = null;
+        let ytReady = false;
+        let autoplayRequested = false;
+
+        function pauseAll(){
+            try{ s1Video.pause(); }catch(e){}
+            try{ s3Video.pause(); }catch(e){}
+            if(ytPlayer && ytReady){ try{ ytPlayer.pauseVideo(); }catch(e){} }
+        }
+
+        function playSection1(){
+            pauseAll();
+            s1Video.muted = true;
+            s1Video.play().catch(()=>{});
+        }
+        function playSection2(){
+            pauseAll();
+            if(ytPlayer && ytReady){
+                try{
+                    ytPlayer.mute();
+                    ytPlayer.playVideo();
+                }catch(e){}
+            } else {
+                const ifr = document.getElementById(youtubeIframeId);
+                if(ifr){
+                    const base = ifr.src.split('?')[0];
+                    ifr.src = base + '?enablejsapi=1&autoplay=1&rel=0&playsinline=1';
+                }
+            }
+        }
+        function playSection3(){
+            pauseAll();
+            s3Video.muted = true;
+            s3Video.src = s3Files[s3Index];
+            s3Video.load();
+            s3Video.play().catch(()=>{});
+        }
+
+        if(s1Video){
+            s1Video.addEventListener('ended', () => {
+                playSection2();
+            });
+        }
+        if(s3Video){
+            s3Video.addEventListener('ended', () => {
+                s3Index++;
+                if(s3Index < s3Files.length){
+                    playSection3();
+                } else {
+                    s3Index = 0;
+                    playSection1();
+                }
+            });
+        }
+
+        window.onYouTubeIframeAPIReady = function(){
+            ytPlayer = new YT.Player('youtube-iframe', {
+                events: {
+                    onReady: function(event){
+                        ytReady = true;
+                        if(autoplayRequested){
+                            ytPlayer.mute();
+                            ytPlayer.playVideo();
+                        }
+                    },
+                    onStateChange: function(e){
+                        if(e.data === YT.PlayerState.ENDED){
+                            playSection3();
+                        }
+                    }
+                },
+                playerVars: {
+                    controls: 1,
+                    rel: 0,
+                    modestbranding: 1,
+                    playsinline: 1
+                }
+            });
+        };
+
+        (function loadYT(){
+            if(window.YT && window.YT.Player) return;
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            document.head.appendChild(tag);
+        })();
+
+        window.addEventListener('load', () => {
+            autoplayRequested = true;
+            setTimeout(() => {
+                s3Index = 0;
+                playSection1();
+            }, 300);
+        });
+
+        document.addEventListener('click', () => {
+            try{
+                if(!s1Video.paused) s1Video.muted = false;
+                if(!s3Video.paused) s3Video.muted = false;
+                if(ytPlayer && ytReady) ytPlayer.unMute();
+            }catch(e){}
+        }, { once: false });
+    })();
+    </script>
 
 </body>
 </html>
