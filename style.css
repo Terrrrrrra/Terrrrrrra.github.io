@@ -26,9 +26,9 @@ body {
 
 /* 공통 컨테이너 */
 .container{
-    max-width:1100px;
+    max-width:1400px;
     margin: 0 auto;
-    padding: 24px;
+    padding: 16px;
 }
 
 /* 헤더 */
@@ -86,36 +86,29 @@ header {
     font-size: 0.95rem;
 }
 
-/* 기술 버튼 */
+/* 기술 스택 뱃지 */
 .tech-stack {
     display: flex;
     gap: 10px;
     margin-top: 8px;
+    flex-wrap: wrap;
 }
 
-.tech-stack button {
-    background: linear-gradient(180deg, #0b5c78 0%, #094f64 100%);
-    color: var(--white);
-    border: none;
-    padding: 8px 14px;
+.tech-badge {
+    background: linear-gradient(180deg, rgba(11,92,120,0.1), rgba(22,181,234,0.05));
+    color: var(--card);
+    padding: 6px 12px;
     border-radius: 999px;
-    cursor: pointer;
-    font-weight: 700;
     font-size: 0.9rem;
-    box-shadow: 0 6px 16px rgba(8,55,74,0.12);
-    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-}
-
-.tech-stack button:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(8,55,74,0.16);
+    font-weight: 500;
+    border: 1px solid rgba(11,92,120,0.1);
 }
 
 /* 게임 섹션 카드 스타일 */
 .game-section {
     display: flex;
-    gap: 20px;
-    padding: 20px 0;
+    gap: 24px;
+    padding: 12px 0;
     align-items: stretch;
 }
 
@@ -136,7 +129,7 @@ header {
 }
 
 .game-image{
-    flex:1;
+    flex:2;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -193,51 +186,64 @@ header {
 /* 썸네일 레이아웃 강제 동일 너비 */
 .video-thumbs{
     display:flex;
-    gap:8px;
-    margin-top:12px;
+    gap:12px;
     overflow-x:auto;
-    padding-bottom:6px;
+    padding:4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--card) transparent;
     width:100%;
     align-items:center;
 }
 
 /* video-thumb 크기 유지 */
 .video-thumb{
-    width:140px;
-    height:80px;
+    width:160px;
+    height:90px;
     object-fit:cover;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
-    box-shadow: 0 6px 16px rgba(8,55,74,0.08);
-    transition: transform .12s ease, box-shadow .12s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     background:#000;
 }
 
 .video-thumb:hover{
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 28px rgba(8,55,74,0.12);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(11,92,120,0.2);
 }
 
 /* 유니티 웹지엘 */
 .unity-section{
-    padding: 18px 0 32px 0;
+    padding: 64px 0;
+    margin-top: 48px;
+    margin-bottom: 32px;
+    border-top: 1px solid rgba(11,92,120,0.1);
+    position: relative;
+    min-height: 90vh;        /* 뷰포트 높이의 90% */
+    display: flex;           /* Flex 컨테이너로 변경 */
+    align-items: center;     /* 수직 중앙 정렬 */
 }
 
 .unity-wrapper{
     background: linear-gradient(180deg,#ffffff, #f6fbfc);
-    border-radius: 12px;
-    padding: 18px;
+    border-radius: 16px;
+    padding: 24px;
     box-shadow: 0 10px 30px rgba(12,40,60,0.06);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 90%;            /* wrapper 높이도 90%로 조정 */
 }
 
 #unity-canvas{
-    width:100%;
-    max-width:900px;
-    height:auto;
-    border-radius:8px;
+    width: auto;            /* 너비 자동 조정 */
+    height: 90%;           /* 높이 90%로 설정 */
+    max-height: 90vh;      /* 최대 높이 제한 */
+    aspect-ratio: 1 / 1;   /* 1:1 비율 유지 */
+    border-radius: 12px;
     background:#231F20;
 }
 
@@ -266,7 +272,148 @@ footer button:hover {
     transform: translateY(-3px);
 }
 
+/* 프로젝트 카드 스타일 */
+.project-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(11,92,120,0.08);
+    backdrop-filter: blur(8px);
+    flex: 1.8; /* 설명 영역 비율 증가 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.project-section {
+    margin-bottom: 24px;
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 0;
+}
+
+.project-section:last-child {
+    margin-bottom: 0;
+}
+
+/* 섹션 헤더 스타일링 */
+.section-header {
+    margin-bottom: 12px;
+}
+
+.section-header h3 {
+    color: var(--card);
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--card), transparent);
+    margin-top: 8px;
+}
+
+/* 콘텐츠 스타일링 */
+.content-wrap {
+    padding-left: 4px;
+}
+
+.content-wrap strong {
+    color: var(--card);
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+/* 기존 content-wrap p 스타일 수정 */
+.content-wrap p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 8px 0;
+    color: var(--text);
+    letter-spacing: -0.2px;
+}
+
+/* 비디오 영역 축소 */
+.game-image {
+    flex: 1.2; /* 비디오 영역 비율 감소 */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 프로젝트 링크 버튼 스타일 */
+.project-link {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+/* 프로젝트 링크 섹션 */
+.project-links {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid rgba(11,92,120,0.1);
+}
+
+/* CTA 버튼 개선 */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(180deg, #0b5c78 0%, #094f64 100%);
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 4px 12px rgba(9,79,100,0.15);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(9,79,100,0.25);
+}
+
+.cta-button .icon {
+    font-size: 1.1em;
+}
+
+/* 섹션3 특화 스타일 */
+#section-3 .project-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+#section-3 .project-section {
+    flex: 1;
+    min-width: 280px;
+}
+
 /* 반응형 */
+@media screen and (max-width: 1200px) {
+    .container {
+        padding: 12px;
+    }
+    .game-section {
+        gap: 20px;
+    }
+    .project-section {
+        min-width: 250px;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .profile-section{ flex-direction:row; gap:16px; padding:16px;}
     .profile-photo{ width:120px; height:120px;}
@@ -274,13 +421,81 @@ footer button:hover {
     .game-image{ justify-content:center; }
     .media-section .game-image{ order: 0; }
     .media-section .game-description{ order: 1; padding-top:12px; }
+    .project-card {
+        padding: 20px;
+    }
+    .project-section {
+        min-width: 100%;
+    }
+    .project-links {
+        justify-content: center;
+    }
+    #section-3 .project-section {
+        min-width: 100%;
+    }
 }
 
 @media screen and (max-width: 600px) {
-    .container{ padding:16px; }
-    header{ font-size:1.2rem; padding:18px; border-radius:0; }
-    .profile-section{ flex-direction:column; align-items:center; text-align:center;}
-    .profile-info .name{ font-size:1.2rem; }
-    .tech-stack{ justify-content:center; flex-wrap:wrap;}
-    .video-thumb{ width:110px; height:64px; }
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 12px;
+    }
+
+    .profile-info .name {
+        font-size: 1.4rem;
+    }
+
+    .profile-info .bio {
+        font-size: 0.85rem;
+    }
+
+    .tech-stack {
+        justify-content: center;
+    }
+
+    .game-section {
+        gap: 16px;
+    }
+
+    .game-description, .game-image {
+        padding: 16px;
+    }
+
+    .video-thumb {
+        width: 140px;
+        height: 78px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer button {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1rem;
+    }
+
+    .project-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .project-section {
+        min-width: 100%;
+    }
+
+    .project-links {
+        flex-direction: column;
+        align-items: center;
+    }
 }
