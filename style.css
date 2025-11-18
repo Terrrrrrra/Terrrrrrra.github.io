@@ -219,32 +219,114 @@ header {
     margin-bottom: 32px;
     border-top: 1px solid rgba(11,92,120,0.1);
     position: relative;
-    min-height: 90vh;        /* 뷰포트 높이의 90% */
-    display: flex;           /* Flex 컨테이너로 변경 */
-    align-items: center;     /* 수직 중앙 정렬 */
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
 }
 
+/* wrapper을 플레이영역 + 안내영역으로 분리 */
 .unity-wrapper{
     background: linear-gradient(180deg,#ffffff, #f6fbfc);
     border-radius: 16px;
-    padding: 24px;
+    padding: 20px;
     box-shadow: 0 10px 30px rgba(12,40,60,0.06);
     display: flex;
+    gap: 20px;
+    align-items: stretch;
     justify-content: center;
-    align-items: center;
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 90%;            /* wrapper 높이도 90%로 조정 */
+    overflow: hidden;
 }
 
+/* 플레이 영역: 캔버스가 비율을 유지하며 들어감 */
+.unity-play-area{
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 280px;
+}
+
+/* 기존 캔버스 규칙 유지하되 최대 크기 제한 */
 #unity-canvas{
-    width: auto;            /* 너비 자동 조정 */
-    height: 90%;           /* 높이 90%로 설정 */
-    max-height: 90vh;      /* 최대 높이 제한 */
-    aspect-ratio: 1 / 1;   /* 1:1 비율 유지 */
+    width: 85vmin;
+    height: 85vmin;
+    max-width: 100%;
+    max-height: 80vh;
     border-radius: 12px;
     background:#231F20;
+}
+
+/* 안내(키보드) 사이드바 */
+.unity-instructions{
+    width: 260px;
+    min-width: 200px;
+    background: linear-gradient(180deg, rgba(11,92,120,0.03), rgba(255,255,255,0.6));
+    border-radius: 12px;
+    padding: 16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:12px;
+    color:var(--muted);
+    box-shadow: 0 6px 18px rgba(12,40,60,0.04);
+}
+
+/* 상단: 게임 제목 + 이모지 (크게) */
+.instruction-top{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    width:100%;
+}
+
+.game-title{
+    font-size:1.3rem; /* 스낵게임 크게 */
+    font-weight:800;
+    color:var(--card);
+    line-height:1;
+}
+
+.cookie-emoji{
+    font-size:2rem; /* 쿠키 이모티콘 크게 */
+    display:inline-block;
+    transform: translateY(-2px);
+}
+
+/* 안내 문구: 스낵게임 글씨보다 작고 덜 강조 */
+.unity-instructions .note{
+    font-weight:600;
+    color:var(--muted);
+    text-align:center;
+    font-size:0.85rem; /* 많이 작게 */
+    margin-top:6px;
+}
+
+/* 모바일일때 세로 스택으로 변경 (기존 규칙 유지) */
+@media screen and (max-width: 900px){
+    .unity-wrapper{
+        flex-direction:column-reverse;
+        padding: 16px;
+    }
+    .unity-instructions{
+        width:100%;
+        min-width:unset;
+        flex-direction:row;
+        gap:12px;
+        align-items:center;
+        justify-content:center;
+        padding:12px;
+    }
+    .instruction-top{
+        gap:8px;
+    }
+    .game-title{ font-size:1.05rem; }
+    .cookie-emoji{ font-size:1.6rem; }
+    .unity-instructions .note{ font-size:0.8rem; }
 }
 
 /* 푸터 */
@@ -401,6 +483,52 @@ footer button:hover {
     min-width: 280px;
 }
 
+/* 상세 프로필(About) 섹션 */
+.about-section {
+    margin-top: 20px;
+    margin-bottom: 28px;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.about-card{
+    background: linear-gradient(180deg, #ffffff, rgba(11,92,120,0.02));
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(12,40,60,0.04);
+    color: var(--text);
+    line-height:1.6;
+    font-size: 0.98rem;
+}
+
+.about-card h3{
+    color: var(--card);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    font-weight:800;
+}
+
+/* 목록 스타일 조정 */
+.about-card ul{
+    list-style: inside disc;
+    margin-left: 6px;
+    color: var(--muted);
+}
+
+/* 반응형: 모바일에서 한열로 */
+@media screen and (max-width: 900px){
+    .about-grid{
+        grid-template-columns: 1fr;
+    }
+    .about-card{
+        padding: 16px;
+    }
+}
+
 /* 반응형 */
 @media screen and (max-width: 1200px) {
     .container {
@@ -498,4 +626,356 @@ footer button:hover {
         flex-direction: column;
         align-items: center;
     }
+}
+
+/* section-1을 section-3처럼 동작하게 하여 가로가 넓을 때 동영상이 화면을 넘어가지 않도록 제한 */
+#section-1 .project-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* 각 project-section이 유연하게 줄바꿈하도록 (섹션3와 동일) */
+#section-1 .project-section{
+    flex: 1;
+    min-width: 280px;
+}
+
+/* game-image 영역이 부모 컨테이너를 넘지 않도록 보장 */
+#section-1 .game-image{
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* iframe-wrap(비디오)도 컨테이너 크기를 넘어가지 않도록 보조 */
+#section-1 .iframe-wrap,
+#section-1 .iframe-wrap iframe,
+#section-1 .iframe-wrap video{
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* 우측 상단 고정 이력서 다운로드 버튼 */
+.resume-download-btn{
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 9999;
+    background: linear-gradient(90deg, #0b5c78, #16b5ea);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: none;
+    box-shadow: 0 8px 24px rgba(11,92,120,0.18);
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resume-download-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(11,92,120,0.22);
+}
+
+@media screen and (max-width: 600px){
+    .resume-download-btn{
+        top: 12px;
+        right: 12px;
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 프로필 레이아웃: 사진과 정보 옆배치 */
+.profile-section {
+    padding: 20px;
+    background: transparent;
+    margin-bottom: 18px;
+}
+.profile-top{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+}
+
+/* 프로필 사진: 비율 유지, 찌그러짐 방지 */
+.profile-photo{
+    width:150px;           /* 원하는 너비 */
+    height:auto;           /* 세로는 자동으로 비율 유지 */
+    max-height:220px;
+    object-fit:contain;    /* 비율 유지하며 전체 표시 */
+    display:block;
+    border-radius:8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* 이름, 연락처, 소개 */
+.profile-info{
+    flex:1 1 300px;
+    min-width:180px;
+}
+.profile-info .name{
+    font-size:1.3rem;
+    font-weight:900;
+    color:var(--card);
+    margin-bottom:6px;
+}
+.contact-top{
+    font-size:0.95rem;
+    color:var(--muted);
+    margin-bottom:10px;
+}
+.contact-top .phone,
+.contact-top .email{
+    display:inline-block;
+    margin-right:12px;
+}
+
+/* 자기소개(간단한 bio) : 흰색 배경으로 고정 */
+.profile-info .bio{
+    background: #ffffff;
+    padding:10px 12px;
+    border-radius:8px;
+    color:var(--text);
+    line-height:1.5;
+    box-shadow: 0 6px 14px rgba(12,40,60,0.03);
+}
+
+/* 기술스택: 라벨 추가, 버튼(뱃지)형 제거 -> 단순 텍스트 */
+.tech-stack{
+    margin-top:14px;
+    padding:14px;
+    background: #ffffff;
+    border-radius:10px;
+    box-shadow: 0 8px 20px rgba(12,40,60,0.03);
+}
+.tech-stack h4{
+    margin:0 0 8px 0;
+    font-size:1rem;
+    color:var(--card);
+    font-weight:800;
+}
+.tech-stack .tech-list{
+    margin:0;
+    color:var(--muted);
+    font-size:0.95rem;
+    line-height:1.6;
+}
+
+/* 기존에 .tech-badge/.chip 같은 버튼 스타일이 있다면 인쇄/출력에선 평문으로 변환 */
+.tech-badge, .chip, .tech-stack button {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline !important;
+    color: inherit !important;
+}
+
+/* 인쇄용 보정: PDF 생성 시 레이아웃 깨지지 않도록 */
+@media print {
+    body { -webkit-print-color-adjust: exact; }
+    .profile-photo { max-width: 180px; height: auto; }
+    .profile-info .bio, .tech-stack { background: #fff !important; -webkit-print-color-adjust: exact; }
+}
+
+/* 반응형: 모바일에서 스택 */
+@media screen and (max-width: 900px){
+    .profile-top{ flex-direction: column; align-items:center; text-align:center; }
+    .profile-info { align-items:center; }
+    .contact-top { margin-bottom:8px; }
+    .tech-stack { width:100%; }
+}
+
+/* ===========================
+   PDF / 인쇄 전용 스타일 (세련된 레이아웃 개선)
+   =========================== */
+
+/* PDF 모드 레이아웃을 좀 더 프로페셔널하게 정리 */
+.pdf-mode #resume-content {
+  width: 190mm;
+  margin: 10mm auto;
+  padding: 12mm;
+  background: #ffffff;
+  box-sizing: border-box;
+  color: #111;
+  font-size: 11pt;
+  line-height: 1.45;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 전체 레이아웃: 좌측 프로필(고정 폭) + 우측 본문 */
+.pdf-mode .profile-section {
+  display: grid;
+  grid-template-columns: 52mm 1fr;
+  gap: 10mm;
+  align-items: start;
+  padding: 0;
+  margin: 0 0 8mm 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(11,92,120,0.08);
+  padding-bottom: 8mm;
+}
+
+/* 프로필 박스 정리(사진과 기본정보) */
+.pdf-mode .profile-photo {
+  width: 48mm;
+  height: auto;
+  max-height: 60mm;
+  border-radius: 6px;
+  object-fit: cover;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  background: #f6fbfd;
+}
+
+/* 이름 / 연락처 영역 */
+.pdf-mode .profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pdf-mode .profile-info .name {
+  font-size: 16pt;
+  font-weight: 900;
+  color: #0b1720;
+  margin: 0;
+}
+.pdf-mode .contact-top {
+  font-size: 10pt;
+  color: #3b3f46;
+}
+.pdf-mode .contact-top .phone,
+.pdf-mode .contact-top .email {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* 간단 소개(bio)는 깔끔한 흰 배경, 좁은 박스로 유지 */
+.pdf-mode .profile-info .bio {
+  background: #ffffff;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: #333;
+  font-size: 10.5pt;
+  margin-top: 6px;
+  box-shadow: 0 3px 8px rgba(12,40,60,0.03);
+}
+
+/* 상단에 작은 요약 / 직무표시 (옵션) */
+.pdf-mode .summary-line {
+  font-size: 10pt;
+  color: #0b5c78;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* 본문: 왼쪽 프로필을 제외한 영역은 섹션으로 구성 */
+.pdf-mode .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8mm;
+  margin-top: 8mm;
+}
+
+/* 섹션 제목 스타일 (세련된 액센트) */
+.pdf-mode .about-card h3 {
+  font-size: 12pt;
+  color: #0b5c78;
+  margin: 0 0 6px 0;
+  font-weight: 800;
+  position: relative;
+  padding-left: 8px;
+}
+.pdf-mode .about-card h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: calc(100% - 6px);
+  background: linear-gradient(180deg,#0b5c78,#16b5ea);
+  border-radius: 2px;
+}
+
+/* 카드 내용은 단정한 텍스트 블록으로 표시 */
+.pdf-mode .about-card {
+  background: transparent;
+  padding: 0;
+  color: #222;
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+/* 기술스택: 라벨과 2열 그리드로 정렬 (버튼 제거된 텍스트 목록) */
+.pdf-mode .tech-stack {
+  margin: 0;
+  padding: 0;
+}
+.pdf-mode .tech-stack h4 {
+  margin: 0 0 6px 0;
+  font-size: 11.5pt;
+  color: #0b5c78;
+  font-weight: 800;
+}
+.pdf-mode .tech-stack .tech-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 18px;
+  color: #333;
+  font-size: 10.5pt;
+  margin-top: 6px;
+}
+
+/* 구분선과 섹션 간격 */
+.pdf-mode .section-divider {
+  height: 1px;
+  background: rgba(11,92,120,0.06);
+  margin: 8mm 0;
+  width: 100%;
+}
+
+/* 페이지 브레이크 제어: 섹션 잘림 방지 */
+.pdf-mode .about-card,
+.pdf-mode .profile-section,
+.pdf-mode .project-card {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* 이미지는 원본 비율 유지 (PDF에서 찌그러짐 방지) */
+.pdf-mode img {
+  max-width: 100%;
+  height: auto !important;
+  object-fit: contain;
+  display: block;
+}
+
+/* footer나 기타 UI 제거(확실하게) */
+.pdf-mode header,
+.pdf-mode footer,
+.pdf-mode .resume-download-btn,
+.pdf-mode .unity-section,
+.pdf-mode .game-section {
+  display: none !important;
+}
+
+/* 인쇄용 마지막 보정: 글자 크기/여백 미세 조정 */
+@media print {
+  .pdf-mode #resume-content { width: 190mm; margin: 6mm auto; padding: 10mm; }
+  .pdf-mode .about-grid { grid-template-columns: 1fr 1fr; gap: 7mm; }
+  .pdf-mode .profile-photo { width: 46mm; }
+}
+
+/* 반응형 (PDF 모드가 아닌 화면용) 영향을 최소화 */
+@media screen and (max-width: 900px) {
+  .pdf-mode .about-grid { grid-template-columns: 1fr; }
 }
