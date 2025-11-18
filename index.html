@@ -18,16 +18,24 @@
     <!-- resume용 컨텐츠 묶음: 이 영역이 PDF로 저장됩니다 -->
     <div id="resume-content">
       <section class="profile-section container">
-          <img src="고양이.png" class="profile-photo" alt="프로필 사진" />
+          <img src="Profile.jpg" class="profile-photo" alt="프로필 사진" />
           <div class="profile-info">
               <div class="name">장기성</div>
-              <div class="bio">C# 및 유니티를 주로 다루는 개발자입니다</div>
+              <p class="tagline">C#과 유니티로 몰입감 있는 경험을 설계하는 게임 개발자</p>
+              <div class="contact-info">
+                  <div class="contact-item">📞 010-8357-0046</div>
+                  <div class="contact-item">✉️ jksjks8357@gmail.com</div>
+              </div>
               <div class="tech-stack">
-                  <span class="tech-badge">유니티</span>
-                  <span class="tech-badge">Git &amp; GitHub</span>
-                  <span class="tech-badge">AWS</span>
-                  <span class="tech-badge">Steam</span>
-                  <span class="tech-badge">Google Play Store</span>
+                  <div class="stack-label">기술 스택</div>
+                  <div class="tech-badges">
+                      <span class="tech-badge">유니티</span>
+                      <span class="tech-badge">C#</span>
+                      <span class="tech-badge">Photon</span>
+                      <span class="tech-badge">Git &amp; GitHub</span>
+                      <span class="tech-badge">Firebase</span>
+                      <span class="tech-badge">AWS</span>
+                  </div>
               </div>
           </div>
       </section>
@@ -221,11 +229,6 @@
         });
       </script>
     </section>
-
-    <!-- 푸터 -->
-    <footer>
-        전화번호: 01083570046&nbsp;&nbsp;이메일: jksjks8357@gmail.com
-    </footer>
 
     <!-- 우측 상단 고정 이력서 다운로드 버튼 -->
     <button id="resume-download" class="resume-download-btn" aria-label="이력서 다운로드">이력서 다운로드</button>

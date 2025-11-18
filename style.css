@@ -47,61 +47,102 @@ header {
 /* 프로필 & 기술스택 */
 .profile-section {
     display: flex;
-    gap: 28px;
-    align-items: center;
+    gap: 32px;
+    align-items: flex-start;
     background: var(--white);
     margin-top: 18px;
-    padding: 22px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(12, 40, 60, 0.06);
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(12, 40, 60, 0.08);
 }
 
 .profile-photo {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+    width: 190px;
+    height: 250px;
+    border-radius: 32px 12px 32px 12px;
     object-fit: cover;
-    border: 6px solid rgba(22,181,234,0.12);
-    box-shadow: 0 8px 20px rgba(12,40,60,0.08);
-    background-color: #d9edf3;
+    object-position: center top;
+    border: 4px solid rgba(22,181,234,0.35);
+    box-shadow: 0 20px 34px rgba(12,40,60,0.16);
+    background: linear-gradient(145deg, rgba(22,181,234,0.15), rgba(11,92,120,0.08));
 }
 
 .profile-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     flex: 1;
 }
 
 .profile-info .name {
     background: transparent;
-    padding: 6px 0;
-    color: var(--text);
-    font-weight: 800;
-    font-size: 1.6rem;
+    padding: 4px 0;
+    color: var(--card);
+    font-weight: 900;
+    font-size: 1.9rem;
 }
 
-.profile-info .bio{
-    color: var(--muted);
-    font-size: 0.95rem;
+.profile-info .tagline{
+    background: linear-gradient(135deg, rgba(22,181,234,0.12), rgba(11,92,120,0.08));
+    color: var(--text);
+    font-size: 1.02rem;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-radius: 12px;
+    line-height: 1.5;
+    border: 1px solid rgba(11,92,120,0.08);
+}
+
+.contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    color:var(--muted);
+    font-size:0.95rem;
+    font-weight:600;
+}
+
+.contact-item{
+    padding:8px 0;
+    border-bottom:1px solid rgba(11,92,120,0.08);
+}
+.contact-item:last-child{
+    border-bottom:none;
 }
 
 /* 기술 스택 뱃지 */
 .tech-stack {
+    margin-top: 10px;
+    padding: 18px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(12,40,60,0.06);
+    border: 1px solid rgba(11,92,120,0.06);
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    margin-top: 8px;
-    flex-wrap: wrap;
+}
+
+.stack-label{
+    font-size:1rem;
+    font-weight:800;
+    color:var(--card);
+}
+
+.tech-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .tech-badge {
     background: linear-gradient(180deg, rgba(11,92,120,0.1), rgba(22,181,234,0.05));
     color: var(--card);
-    padding: 6px 12px;
+    padding: 8px 14px;
     border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid rgba(11,92,120,0.1);
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: 1px solid rgba(11,92,120,0.14);
 }
 
 /* 게임 섹션 카드 스타일 */
@@ -491,7 +532,7 @@ footer button:hover {
 
 .about-grid{
     display:grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 18px;
 }
 
@@ -516,7 +557,11 @@ footer button:hover {
 .about-card ul{
     list-style: inside disc;
     margin-left: 6px;
-    color: var(--muted);
+    color: var(--text);
+    line-height: 1.7;
+}
+.about-card ul li{
+    margin-bottom: 6px;
 }
 
 /* 반응형: 모바일에서 한열로 */
@@ -544,7 +589,7 @@ footer button:hover {
 
 @media screen and (max-width: 900px) {
     .profile-section{ flex-direction:row; gap:16px; padding:16px;}
-    .profile-photo{ width:120px; height:120px;}
+    .profile-photo{ width:140px; height:190px;}
     .game-section{ flex-direction:column;}
     .game-image{ justify-content:center; }
     .media-section .game-image{ order: 0; }
@@ -571,8 +616,8 @@ footer button:hover {
     }
 
     .profile-photo {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 170px;
         margin-bottom: 12px;
     }
 
@@ -706,13 +751,13 @@ footer button:hover {
 
 /* 프로필 사진: 비율 유지, 찌그러짐 방지 */
 .profile-photo{
-    width:150px;           /* 원하는 너비 */
-    height:auto;           /* 세로는 자동으로 비율 유지 */
-    max-height:220px;
-    object-fit:contain;    /* 비율 유지하며 전체 표시 */
+    width:190px;
+    height:250px;
+    object-fit:cover;
     display:block;
-    border-radius:8px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    border-radius:32px 12px 32px 12px;
+    border:4px solid rgba(22,181,234,0.35);
+    box-shadow: 0 20px 34px rgba(0,0,0,0.1);
 }
 
 /* 이름, 연락처, 소개 */
@@ -782,7 +827,12 @@ footer button:hover {
 /* 인쇄용 보정: PDF 생성 시 레이아웃 깨지지 않도록 */
 @media print {
     body { -webkit-print-color-adjust: exact; }
-    .profile-photo { max-width: 180px; height: auto; }
+    .profile-photo {
+        max-width: 170px;
+        height: auto;
+        border-radius: 32px 12px 32px 12px;
+        border: 3px solid rgba(22,181,234,0.35);
+    }
     .profile-info .bio, .tech-stack { background: #fff !important; -webkit-print-color-adjust: exact; }
 }
 
@@ -827,14 +877,13 @@ footer button:hover {
 
 /* 프로필 박스 정리(사진과 기본정보) */
 .pdf-mode .profile-photo {
-  width: 48mm;
-  height: auto;
-  max-height: 60mm;
-  border-radius: 6px;
+  width: 44mm;
+  height: 58mm;
+  border-radius: 30px 12px 30px 12px;
   object-fit: cover;
-  border: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-  background: #f6fbfd;
+  border: 2px solid rgba(22,181,234,0.35);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  background: linear-gradient(145deg, rgba(22,181,234,0.15), rgba(11,92,120,0.08));
 }
 
 /* 이름 / 연락처 영역 */
@@ -881,7 +930,7 @@ footer button:hover {
 /* 본문: 왼쪽 프로필을 제외한 영역은 섹션으로 구성 */
 .pdf-mode .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8mm;
   margin-top: 8mm;
 }
@@ -971,7 +1020,7 @@ footer button:hover {
 /* 인쇄용 마지막 보정: 글자 크기/여백 미세 조정 */
 @media print {
   .pdf-mode #resume-content { width: 190mm; margin: 6mm auto; padding: 10mm; }
-  .pdf-mode .about-grid { grid-template-columns: 1fr 1fr; gap: 7mm; }
+  .pdf-mode .about-grid { grid-template-columns: 1fr; gap: 7mm; }
   .pdf-mode .profile-photo { width: 46mm; }
 }
 

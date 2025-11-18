@@ -8,17 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const clone = content.cloneNode(true);
         clone.querySelectorAll('video, iframe, canvas, .video-thumbs, .unity-wrapper, .unity-instructions, .game-section, .game-image, .iframe-wrap, .video-thumb, button').forEach(el => el.remove());
 
-        // layout adjustments for clean A4 capture
-        clone.style.maxWidth = '800px';
-        clone.style.margin = '0 auto';
-        clone.style.padding = '20px';
-        clone.style.background = '#fff';
-        clone.style.boxSizing = 'border-box';
-        clone.querySelectorAll('img').forEach(img => {
-            img.style.maxWidth = '180px';
-            img.style.height = 'auto';
-            img.style.display = 'block';
-        });
+        // wrap cloned content inside pdf-mode container to reuse resume-specific CSS
+        const pdfModeContainer = document.createElement('div');
+        pdfModeContainer.classList.add('pdf-mode');
+        pdfModeContainer.appendChild(clone);
 
         // place wrapper in normal document flow (visible), not offscreen nor fully transparent
         const wrapper = document.createElement('div');
@@ -28,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapper.style.width = '100%';
         wrapper.style.zIndex = '9999';
         wrapper.style.background = '#fff';
-        wrapper.appendChild(clone);
+        wrapper.appendChild(pdfModeContainer);
         document.body.appendChild(wrapper);
 
         // ensure fonts/images ready
@@ -42,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         await new Promise(res => setTimeout(res, 120)); // allow browser to update
 
         const opt = {
-            margin: 5, // mm
-            filename: 'resume_jang_2025.pdf',
+            margin: [8, 8, 8, 8],
+            filename: '장기성_이력서.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
                 scale: 2,
@@ -57,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            await html2pdf().set(opt).from(clone).save();
+            await html2pdf().set(opt).from(pdfModeContainer).save();
         } catch (err) {
             console.error('PDF 생성 중 오류:', err);
             alert('이력서 다운로드에 실패했습니다.');
